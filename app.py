@@ -173,29 +173,25 @@ if selected == "Reservar":
             elif pista == "":
                 st.warning("Elija una Pista")
             else:
-                ##CREAR EVENTO GOOGLECALENDAR############################
+                ##CREAR EVENTO GOOGLECALENDAR#####################################################################################################################################
                 #Fecha en formato UTC
                 parsed_time = dt.datetime.strptime(hora, "%H:%M").time()
                 hours1 = parsed_time.hour
                 minutes1 = parsed_time.minute
-                
+                #Agrega una hora y media a la hora y lo formatea en UTC                                                             
                 end_hours = add_hour_and_half(hora)
                 parsed_time2 = dt.datetime.strptime(end_hours, "%H:%M").time()
                 hours2 = parsed_time2.hour
-                minutes2 = parsed_time2.minute
-                
-                
+                minutes2 = parsed_time2.minute                
+                #Crea la date de inicio y final
                 start_time = dt.datetime(fecha.year, fecha.month, fecha.day, hours1 + hora_time_zone, minutes1).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
                 end_time = dt.datetime(fecha.year, fecha.month, fecha.day, hours2 + hora_time_zone, minutes2).astimezone(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S")
-                
-                calendar = GoogleCalendar(credentials, id)
-                
-                
-                #Crea el evento ingresando todos los datos del mismo
-                calendar.create_event(nombre, start_time, end_time, time_zone)
-                
-                
-                #########################################################                
+                #Crea el objeto calendario
+                calendar = GoogleCalendar(credentials, id)                                                           
+                #Crea el evento ingresando todos los datos del mismo                                                                                                                
+                calendar.create_event(nombre, start_time, end_time, time_zone)                                                                                                      
+                                                                                                                                                                                                                                                                                                                                                    
+                #####################################################################################################################################################################                
                 
                 ##CREAR REGISTRO EN GOOGLESHEET###############################
                 #Crea ID único para el registro                              #
