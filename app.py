@@ -56,7 +56,7 @@ sheet_name = "reservas"
 idcalendar1 = "18d7ff1017a3b9639f2ea26953d3add34c176b72a21caaa493a45d3ebd7c3cb6@group.calendar.google.com"
 idcalendar2 ="5f7a6c267ba81df73ce577cffa64a255a6ce522a30edc20f086fd836c678b96a@group.calendar.google.com"
 time_zone = "America/Argentina/Buenos_Aires"
-hora_time_zone = -3
+hora_time_zone = 0
 #Credenciales API Google
 credentials = st.secrets["google"]["credentials_google"]
 
@@ -190,8 +190,6 @@ if selected == "Reservar":
                 calendar = GoogleCalendar(credentials, id)                                                           
                 #Crea el evento ingresando todos los datos del mismo                                                                                                                
                 calendar.create_event(nombre, start_time, end_time, time_zone)                                                                                                      
-                                                                                                                                                                                                                                                                                                                                                    
-                #####################################################################################################################################################################                
                 
                 ##CREAR REGISTRO EN GOOGLESHEET###############################
                 #Crea ID único para el registro                              #
